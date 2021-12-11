@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="979" height="484" viewBox="0 0 979 484">
+  <defs>
+    <linearGradient id="linear-gradient" x1="1" y1="0.5" x2="0.447" y2="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#001a33" stop-opacity="0"/>
+      <stop offset="1" stop-color="#001a33"/>
+    </linearGradient>
+  </defs>
+  <g id="Page-1" opacity="0.88">
+    <g id="_02-Components-_-Hero-_-Primary-_-Desktop-_-Full-background" data-name="02-Components-/-Hero-/-Primary-/-Desktop-/-Full-background">
+      <rect id="Overlay" width="979" height="484" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>
