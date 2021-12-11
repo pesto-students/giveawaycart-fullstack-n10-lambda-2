@@ -67,7 +67,7 @@ const ProductScreen = ({productId}) => {
          {!(productDetails.loading) && <div className="lg:grid lg:grid-cols-12 lg:auto-rows-min lg:gap-x-8">
             <div className="lg:col-start-8 lg:col-span-5">
               <div className="flex justify-between">
-                <h1 className="text-xl font-medium text-gray-900">{product.name}</h1>
+                <h1 className="text-xl md:text-3xl font-medium text-gray-900">{product.name}</h1>
                 <p className="text-xl font-medium text-gray-900">{}</p>
               </div>
               
@@ -78,7 +78,12 @@ const ProductScreen = ({productId}) => {
             <div className="mt-8 lg:mt-0 lg:col-start-1 lg:col-span-7 lg:row-start-1 lg:row-span-3">
               <h2 className="sr-only">Images</h2>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8 p-2 group cursor-pointer font-bold
+              transition
+              duration-200
+              ease-in transform
+              sm:hover:scale-105
+              hover:z-50">
                 
                   <img
                     key={product.id}
@@ -98,7 +103,7 @@ const ProductScreen = ({productId}) => {
                 }
                 <div className="mt-8">
                   <div className="flex items-center justify-between">
-                    <h2 className="text-sm font-medium text-gray-900">Size</h2>
+                    <h2 className="text-lg font-semibold sm:text-lg md:text-xl text-gray-900">Size</h2>
                     <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                       {/* See sizing chart */}
                     </a>
@@ -137,7 +142,7 @@ const ProductScreen = ({productId}) => {
                 }} passHref>  
                   <button
                     type="submit"
-                    className="mt-8 w-full bg-header border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-header"
+                    className="mt-8 w-full bg-header border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-lg sm:text-lg md:text-xl font-medium text-white hover:bg-header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-header"
                       >
                     Add to cart
                   </button>                
@@ -146,7 +151,7 @@ const ProductScreen = ({productId}) => {
                   <button
                     type="submit"
                     onClick={showSignUpForm}
-                    className="mt-8 w-full bg-header border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-header"
+                    className="mt-8 w-full bg-header border border-transparent rounded-md py-3 px-8 flex items-center sm:text-lg md:text-xl  justify-center text-lg font-medium text-white hover:bg-header focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-header"
                   >
                     Login to Add to Cart
                   </button>
@@ -156,19 +161,19 @@ const ProductScreen = ({productId}) => {
               {// Product details
               }
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Description</h2>
+                <h2 className="text-lg sm:text-md md:text-xl lg:text-2xl font-bold text-gray-900">Description</h2>
 
                 <div
-                  className="mt-4 prose prose-sm text-gray-500"
+                  className="mt-4 prose prose-sm text-lg font-semibold sm:text-md md:text-xl lg:text-xl lg:font-semibold text-gray-900"
                   dangerouslySetInnerHTML={{ __html: product.description }}
                 />
               </div>
               
               
               <div className="mt-10">
-                <h2 className="text-sm font-medium text-gray-900">Pickup Location</h2>
+                <h2 className="text-lg md:text-xl font-bold underline text-gray-900">Pickup Location:</h2>
 
-                <div className="mt-6 space-y-4 sm:mt-0 sm:ml-0 sm:flex-none sm:w-40">
+                <div className="mt-6 py-2 text-lg font-landingPageFont tracking-wider font-semibold space-y-4 sm:mt-0 sm:ml-0 sm:flex-none sm:w-40">
                  {product.dropLocation}                  
               </div>
               </div>  

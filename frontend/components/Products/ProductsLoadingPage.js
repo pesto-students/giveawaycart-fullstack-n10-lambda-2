@@ -36,7 +36,7 @@ const products = [1,2,3,4,5,6,7,8,9,10]
     <>
       <div className="max-w-2xl mx-auto py-1 px-4 sm:py-1 sm:px-6 lg:max-w-7xl lg:px-8">
         <div className="mt-2 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
-        {  products.map(value => (
+        {  productList.products.map(value => (
           <div key={value} className="w-full h-60 animate-pulse">
               <div className=" w-full h-full bg-gray-300 rounded-md">          
                 <div className="w-full bg-gray-300 h-42  ">

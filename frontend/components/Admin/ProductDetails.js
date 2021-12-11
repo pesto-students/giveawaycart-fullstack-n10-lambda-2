@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProductFromDB, listProducts } from '../../redux/actions/productActions';
@@ -8,16 +9,19 @@ const ProductDetails = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const productDelete = useSelector((state) => state.productDelete)
-
+  const router = useRouter()
   const { loading, error, products } = productList
 
   useEffect(() => {
-    
-  },[dispatch, productDelete.Success])
+    console.log('product loading', productDelete.loading)
+    console.log('answer',products)
+  },[dispatch, productDelete.loading])
   
   const deleteProduct = async (productId) => {
     console.log('Print?',productId)
     await dispatch(deleteProductFromDB(productId))
+    await dispatch(listProducts(''))
+    router.push('/admin')
   }
 
   return (
@@ -28,9 +32,10 @@ const ProductDetails = () => {
           ? (<h3>{error}</h3>)
           : (                
             <div className="max-w-2xl mx-auto py-1 px-4 sm:py-1 sm:px-6 lg:max-w-7xl lg:px-8">
-              {productList.loading && <CategoryFilterLoading />}
-              {!(productList.loading) && <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
-                {products.map((product) => (
+              {productList.loading || !(productDelete.loading) || <CategoryFilterLoading />}
+              {!(productList.loading) &&
+                <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-8">
+                {!(productDelete.loading) && products.map((product) => (
                 <a key={product._id}
                   onClick={() => deleteProduct(product._id)}
                 >

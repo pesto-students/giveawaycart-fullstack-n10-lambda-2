@@ -25,8 +25,7 @@ export const productDeleteReducer = (state = {}, action) => {
     
     case PRODUCT_DELETE_REQUEST:
       return {...state, loading: true}
-    case PRODUCT_DELETE_SUCCESS:
-      
+    case PRODUCT_DELETE_SUCCESS:      
       return {loading: false, success: true}
     case PRODUCT_DELETE_FAIL:
       return { loading: false, error: action.payload }

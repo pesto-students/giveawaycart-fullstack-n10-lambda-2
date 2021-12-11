@@ -2,6 +2,8 @@ import Covid19Alert from "./Covid19Alert";
 import HowToShare from "./HowToShare";
 import MakeADiffPage from "./MakeADiffPage";
 import MiddleSection from "./MiddleSection";
+import Typewriter from 'typewriter-effect';
+import ShareShoppingImage from "./ShareShoppingImage";
 
 const LandingPage = () => {
   return (
@@ -10,15 +12,41 @@ const LandingPage = () => {
         <div className="relative h-96 lg:h-98 mx-auto max-w-7xl overflow-hidden">
           <img src="https://scx2.b-cdn.net/gfx/news/2021/piles-of-used-clothes.jpg" alt="Avatar" className="object-cover mt-1 w-full h-full " />
           {/* Text on image */}
-          <div className="absolute w-full  top-0 inset-y-0  text-white text-3xl md:text-5xl lg:text;7xl
+          <div className="absolute w-full  top-0 inset-y-0  text-white text-3xl md:text-5xl lg:text-4xl;7xl
           mt-7 md:mt-4 lg:mt-6
           font-sans font-bold text-center leading-40
           backdrop-filter backdrop-blur-sm
           backdrop-opacity-30 ">
-            Let&apos;s not waste our wonderful world
+            
+            <div className="grid grid-cols-2">
+              <div className="place-self-end text-lg 
+                    sm:text-2xl md:text-3xl lg:text-4xl pl-2  bg-LandingPageBackground  py-1">
+                <Typewriter className="text-alertBg"
+                onInit={(typewriter) => {
+                  typewriter.typeString('Let\'s Not Waste')                    
+                    .pauseFor(2500)                    
+                    .deleteChars(9)
+                    .typeString('SHARE & SAVE!')                    
+                    .callFunction(() => {
+                      console.log('All strings were deleted');
+                    })
+                    .start();
+                }}
+              />
+              </div>
+              <div className="pr-2 place-self-start text-lg
+              sm:text-2xl md:text-3xl lg:text-4xl bg-LandingPageBackground mix-blend-luminosity py-1">
+                Our Wonderful World 
+              </div>
+              
+                         
+            </div>
+            
+              
           </div>
-          <div className="absolute w-full  top-0 inset-y-0  text-white text-3xl md:text-4xl lg:text;7xl
-          mt-36 uppercase md:mt-40 lg:mt-48
+
+          <div className="absolute w-full  top-0 inset-y-0  text-white text-lg sm:text-2xl md:text-4xl lg:text;7xl
+          mt-40 uppercase md:mt-40 lg:mt-48
           font-sans font-bold text-center leading-40
           backdrop-filter backdrop-blur-sm
           backdrop-opacity-30 ">
@@ -49,6 +77,7 @@ const LandingPage = () => {
       <Covid19Alert />
       <MiddleSection />
       <HowToShare />
+      <ShareShoppingImage />
       <MakeADiffPage />
     </div>    
   );

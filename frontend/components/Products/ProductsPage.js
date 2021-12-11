@@ -18,6 +18,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { listProducts } from '../../redux/actions/productActions';
 import CategoryFilterLoading from '../CategoryFilter/CategoryFilterLoading';
+import Image from 'next/image';
+
+import { ThumbUpIcon } from '@heroicons/react/solid';
 
 //useSelector - select the part of the state that you want to use here
 
@@ -59,21 +62,63 @@ const ProductsPage = () => {
               onClick={gotoProductScreen}>
               <img src="https://i.ibb.co/8KQsD0v/Blue-Jean-Shirt.jpg" alt="" />
               </a> */}
-              <div className="mt-6 cursor-pointer grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-9">
+              <div className="mt-6 cursor-pointer grid grid-cols-1 gap-y-10 gap-x-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:gap-x-9">
                 {products.map((product) => (
                   product.isVisible &&
                   <div key={product._id}
                       onClick={()=>gotoProductScreen(product._id)}
-                      className="group relative">
-                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 md:h-80  sm:h-80 lg:aspect-none">
+                    className="group relative">
+
+                    <div
+                        className="p-2 group cursor-pointer font-bold
+                        transition
+                        duration-200
+                        ease-in transform
+                        sm:hover:scale-105
+                        hover:z-50">
+                        <Image
+                          layout="responsive"
+                          src={product.imageSrc}
+                          height={320}
+                          width={260}
+                        />
+                        <div className="p-2">
+                        <p className="truncate font-sans
+                            text-lg tracking-wider
+                            transition-all
+                            duration-100
+                            ease-in-out
+                            group-hover:font-extrabold
+                            group-hover:text-4xl                  
+                            font-semibold max-w-md">{product.color}</p>
+
+                          <h2 className='mt-1 text-2xl font-landingPageFont text-black
+                            transition-all
+                            duration-100
+                            ease-in-out
+                            group-hover:font-light'>{product.name}</h2>
+                          
+                        {product.sizes.map((size) => (
+                          size.inStock && <p className="flex items-center text-xl opacity-0 group-hover:opacity-100">
+                            {size.name}
+                          </p>
+                          
+                        ))
+
+                        }
+                          
+                        </div>
+                      </div>
+                    
+                    {/* <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 md:h-80  sm:h-80 lg:aspect-none">
                           <img
                           src={product.imageSrc}
                           alt={product.imageAlt}
                           className="w-full h-full sm:w-50 sm:h-50 object-center object-cover lg:w-full lg:h-full"
                           />                                    
-                    </div>
+                    </div> */}
                     
-                    <div className="mt-4 flex justify-between">
+                    {/* <div className="mt-4 flex justify-between">
                       <div>
                         <h3 className="text-sm text-gray-500">
                             <span aria-hidden="true" className="absolute inset-0" />
@@ -89,7 +134,7 @@ const ProductsPage = () => {
                         </h3>
                         <p className="mt-1 text-sm text-gray-500">{product.size}</p>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 ))}
               </div>      

@@ -41,7 +41,7 @@ const SliderPage = () => {
                       </div>
                     </div>
                   </div> */}
-                  <div className="cursor-pointer h-3/4 flex content-center  bg-red-600 md:bg-gray-50" onClick={() => gotoProductScreen(item._id)}>
+                  <div className="cursor-pointer h-3/4 flex content-center  bg-gray-200 md:bg-gray-50" onClick={() => gotoProductScreen(item._id)}>
                     <div>
                       <img className=" p-1 m-2 h-72  " src={item.imageSrc} alt="" />
                     </div>

@@ -1,5 +1,5 @@
 
-import { CheckIcon, ClockIcon,  } from '@heroicons/react/solid'
+import { CheckIcon, ClockIcon, XCircleIcon  } from '@heroicons/react/solid'
 import {useRouter} from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
@@ -60,28 +60,78 @@ const ShoppingCart = () => {
             </h2>
 
             {!(cart.loading) && <ul role="list" className="border-t border-b border-gray-200 divide-y divide-gray-200">
+              
               {products.map((product) => (
-                <li key={product.id} className="flex py-6">
-                  <div className="flex-shrink-0">
+                <li key={product.id} className="flex flex-col py-6  
+                    sm:grid sm:grid-cols-10">
+                  <XCircleIcon
+                    onClick={() => removeFromCart(`${product._id}`)}
+                    className="hidden sm:block h-5 w-5 text-red-500 cursor-pointer transition
+                        duration-200
+                        ease-in transform
+                        sm:hover:scale-125"/>
                     <img
                       src={product.imageSrc}
                       alt={product.imageAlt}
-                      className="w-24 h-24 rounded-md object-center object-cover sm:w-32 sm:h-32"
-                    />
+                    className="w-40 h-40 mx-auto
+                        md:h-48 md:w-36
+                        rounded-md object-center object-cover sm:w-32 sm:h-32 sm:col-span-2 sm:pr-3"
+                  />
+                  <div className="sm:col-start-4 sm:col-span-6">
+                  <div className="flex justify-center sm:justify-start
+                    sm:col-span-4">
+                    <div className=" font-landingPageFont font-semibold text-lg sm:text-2xl md:text-3xl my-2 mx-2">
+                      {product.name}
+                    </div>
+                    
+                    <div className="font-serif font-semibold text-lg sm:text-xl md:text-2xl my-2 mx-2">
+                      {product.color}
+                    </div>
+                    
+                    <div className="font-serif font-semibold text-md sm:text-lg md:text-xl my-2 mx-2">
+                      {product.size}
+                    </div>
                   </div>
 
-                  <div className="ml-4 flex-1 flex flex-col sm:ml-6">
+                    <div className="grid sm:grid-cols-2">
+                      <div className="font-semibold mx-auto font-serif ">
+                        Drop Location:
+                      </div>
+                      <div className="ml-16 sm:ml-0">
+                              {product.dropLocation}                  
+                      </div>
+                    </div>
+                   
+                   <div className="relative flex  my-2 justify-center">                      
+                        <ClockIcon className="mt-1 h-5 w-5 text-header" aria-hidden="true" />
+                      <span className="font-bold mx-2">Pickup: </span>
+                        <span className="">{product.pickupTime}</span>
+                    </div>
+                    <div className="mx-auto sm:hidden">
+                        
+                        <button type="button"
+                          onClick={() => removeFromCart(`${product._id}`)}
+                          className="text-sm font-medium text-red-600 hover:text-red-500">
+                          <span>Remove</span>
+                        </button>
+                      </div>
+                </div>
+
+                  {/* <div className="ml-4 flex-1 flex flex-col sm:ml-6">
                     <div>
                       <div className="flex justify-between">
                         <h4 className="text-sm">
-                          <a href={product.href} className="font-medium text-gray-700 hover:text-gray-800">
+                          <a href={product.href} className="sm:text-lg text-md font-bold text-gray-700 hover:text-gray-800 md:text-lg">
                             {product.name}
                           </a>
                         </h4>
-                        <p className="ml-4 text-sm font-medium text-gray-900">{product.dropLocation}</p>
+                        <p className="mt-1 text-md font-bold md:text-lg text-gray-500">{product.color}</p>
+                        <p className="mt-1 text-md font-bold md:text-lg text-gray-500">{product.size}</p>
+                        <div className="mt-6 py-2 text-md font-landingPageFont tracking-wider font-semibold space-y-4 sm:mt-0 sm:ml-0 sm:flex-none sm:w-40">
+                          {product.dropLocation}                  
+                        </div>
                       </div>
-                      <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                      <p className="mt-1 text-sm text-gray-500">{product.size}</p>
+                      
                     </div>
 
                     <div className="mt-4 flex-1 flex items-end justify-between">
@@ -99,7 +149,7 @@ const ShoppingCart = () => {
                         </button>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </li>
               ))}
             </ul>}

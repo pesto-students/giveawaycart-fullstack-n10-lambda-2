@@ -21,8 +21,12 @@ const ShareClothes = () => {
             </a>
             </Link>
           </div>
-        </div>
+        </div>        
       </div>
+      <div className="mx-5 max-lg lg:hidden">
+        <img src="https://hope-product-profile-images.s3.ap-southeast-1.amazonaws.com/donate.JPG" alt="Share Your Clothes" />
+      </div>
+      
     </div>
   );
 }

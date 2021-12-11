@@ -69,18 +69,18 @@ export const deleteProductFromDB = (productId) => async (dispatch, getState) =>{
       `/api/products/${productId}`, 
       config)
     
-     dispatch({
+     await dispatch({
       type: PRODUCT_DELETE_SUCCESS,
       payload: data
      })
     // console.log('what did we get after deleting a product',data)
     
-    dispatch({ type: PRODUCT_LIST_REQUEST })
+    // await dispatch({ type: PRODUCT_LIST_REQUEST })
     
-    dispatch({
-      type: PRODUCT_LIST_SUCCESS,
-      payload: data
-    })
+    // await dispatch({
+    //   type: PRODUCT_LIST_SUCCESS,
+    //   payload: data
+    // })
 
   //localStorage.setItem('allUsersInfo', JSON.stringify(data))
   } catch (error) {
